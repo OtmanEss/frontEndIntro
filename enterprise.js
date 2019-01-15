@@ -11,44 +11,65 @@ const employees = [
 ]
 
 //* Hoeveel bedraagt de totale loonkost iedere maand?
-function totalSalaries(employees) {
+function totalSalaries(employees) 
+{
+  let totale= employees.reduce((a,b)=>a+b.salary,0)
+  return totale  
 }
+console.log("total salary")
+console.log(totalSalaries(employees))
 
-assert.equal(totalSalaries(employees), 20652)
 
+//console.log(assert)
 
 //* Welke freelancer verdient het meest?
-function bestPaidFreelancer(employees) {
+function bestPaidFreelancer(employees) 
+{  
+  let free= employees.filter(a=>a.freelancer==true)
+  let hight=  Math.max.apply(Math,free.map((a=>a.salary)))
+  let best= employees.filter(a=>a.salary==hight)
+  return best 
 }
+console.log("best paid freelancer")
+console.log(bestPaidFreelancer(employees))
 
-assert.equal(bestPaidFreelancer(employees), 'Els')
 
 
 //* Wie verdient er allemaal meer als 3000?
 function earsMoreThan3k(employees) {
+  return employees
+  .filter(a=>a.salary>3000)
 }
+console.log("earn >3000")
+console.log(earsMoreThan3k(employees))
 
-assert.deepEqual(earsMoreThan3k(employees), ['Sandra', 'Alexander', 'Els'])
 
 
 //* Hoeveel verdient een interne medewerker gemiddeld?
 function averageSalaryNonFreeLancer(employees) {
+let nonfree= employees.filter(a=>a.freelancer==false)
+let sal= nonfree.reduce((a,b)=>a+b.salary,0)
+return sal/nonfree.length
 }
-
-assert.equal(averageSalaryNonFreeLancer(employees), 3134)
-
+console.log("salaire moyen")
+console.log(averageSalaryNonFreeLancer(employees))
 
 //* Wie heeft de langste naam?
 function longestName(employees) {
-}
+  for(let i=0;i<employees.length;i++){}
+  return employees.filter((a,b)=>a.name.localeCompare(b.name)) 
 
-assert.equal(longestName(employees), 'Alexander')
+}
+console.log("long prenom")
+console.log(longestName(employees))
 
 
 //* Print de namen van alle werknemers, gesorteerd op voornaam.
 function sortedNames(employees) {
+  return employees.sort((a,b)=>a.name.localeCompare(b.name))  
 }
+console.log("tri par nom")
+console.log(sortedNames(employees))
 
-assert.deepEqual(sortedNames(employees), ['Alexander', 'Anne', 'Els', 'Igor', 'Marcel', 'Sandra', 'Thomas'])
 
 //*/

@@ -1,6 +1,7 @@
 const assert = require('assert')
 
 
+
 //* schrijf een functie die het grootste van twee getallen teruggeeft
 function max(a, b) {
 }
